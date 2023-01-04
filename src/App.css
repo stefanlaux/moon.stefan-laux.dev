@@ -1,5 +1,11 @@
 canvas{
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+}
 
+*{
+    overflow-x: hidden;
 }
 
 h1{
@@ -8,7 +14,7 @@ h1{
     left: 50%;
     transform: translate(-50%);
     font-size: 1500%;
-    top: -28%;
+    top: -25%;
 }
 
 h3{
