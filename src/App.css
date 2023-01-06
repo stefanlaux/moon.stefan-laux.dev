@@ -28,20 +28,28 @@ h3{
     rotate: -90deg;
     font-size: 150%;
     opacity: 0;
-}
-
-h3:nth-child(2){
-    left: unset;
-    right: 0;
-    animation: right 5s forwards 1s;
-}
-
-h3:nth-child(1){
     left: 0;
     right: unset;
     animation: left 5s forwards 1s;
 }
 
+img{
+    position: absolute;
+    z-index: 2;
+    top: 90%;
+    filter: invert(1);
+    font-size: 150%;
+    opacity: 0;
+    width: 4%;
+    right: 0;
+    left: unset;
+    animation: right 5s forwards 1s;
+}
+
+#details{
+    position: absolute;
+    bottom: 0;
+}
 
 @keyframes opacity {
     0% {

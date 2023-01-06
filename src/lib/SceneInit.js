@@ -28,7 +28,8 @@ export default class SceneInit {
             1,
             1000
         );
-        this.camera.position.z = 48;
+        const t = document.body.getBoundingClientRect().top;
+        this.camera.position.z = t/90 + 45;
 
         // NOTE: Specify a canvas which is already created in the HTML.
         const canvas = document.getElementById(this.canvasId);
@@ -70,8 +71,13 @@ export default class SceneInit {
     }
 
     animate() {
-        // NOTE: Window is implied.
-        // requestAnimationFrame(this.animate.bind(this));
+        document.body.onscroll = () => {
+            const t = document.body.getBoundingClientRect().top;
+            this.camera.position.z = (45+t/90) * 1.01;
+            this.camera.position.x = (t/90) * 1.7;
+            this.camera.position.y = (t/90) * -0.1;
+
+        }
         window.requestAnimationFrame(this.animate.bind(this));
         this.render();
     }
@@ -87,4 +93,6 @@ export default class SceneInit {
         this.camera.updateProjectionMatrix();
         this.renderer.setSize(window.innerWidth , window.innerHeight);
     }
+
+
 }

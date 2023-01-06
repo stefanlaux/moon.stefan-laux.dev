@@ -63,10 +63,12 @@ function App() {
 
   return (
       <div className={"App"}>
-          <h3>10'921 km</h3>
-          <h3>6.68°</h3>
+          <h3>384’400 km</h3>
+          <img src="/assets/arrow.svg" alt="arrow down img" onClick={() => window.location.href = "#details"}/>
+
           <p>MOON</p>
         <canvas id="canvas"  height={"500px"} width={"500px"}/>
+          <div id="details"></div>
       </div>
   );
 }
