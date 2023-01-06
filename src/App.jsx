@@ -25,7 +25,7 @@ function App() {
               .fill(0)
               .map(() => THREE.MathUtils.randFloatSpread(100));
 
-          star.position.set(x, y, z -20);
+          star.position.set(x, y, z -40);
           test.scene.add(star);
       }
 
@@ -37,7 +37,9 @@ function App() {
       const glftLoader = new GLTFLoader();
       glftLoader.load(moonObject, (gltfScene) => {
           moon = gltfScene;
-          moon.scene.scale.set(0.025, 0.025, 0.025);
+          const scale = Math.min(window.innerWidth, window.innerHeight) / 6000 -0.13;
+          console.log(scale);
+          moon.scene.scale.set(scale,scale, scale);
           moon.scene.position.set(0, 1, 0);
           moon.scene.rotation.y = 180;
           test.scene.add(gltfScene.scene);
@@ -61,10 +63,9 @@ function App() {
 
   return (
       <div className={"App"}>
-          <button onClick={() => setClicked(    true)}>Hello World</button>
           <h3>10'921 km</h3>
           <h3>6.68°</h3>
-          <h1>MOON</h1>
+          <p>MOON</p>
         <canvas id="canvas"  height={"500px"} width={"500px"}/>
       </div>
   );

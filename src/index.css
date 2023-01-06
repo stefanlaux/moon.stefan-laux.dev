@@ -1,12 +1,34 @@
-@import url('https://fonts.googleapis.com/css2?family=McLaren&display=swap');
+@import url(//fonts.googleapis.com/earlyaccess/nats.css);
 :root {
-  font-family: McLaren, sans-serif;
+  font-family: 'NATS', sans-serif;
   background-color: black;
   color: white;
-  overflow: hidden;
+  overflow-x: hidden;
+  color-schema: dark;
 }
 
 body{
   margin: 0;
   padding: 0;
+  height: 200vh;
+}
+
+@media screen and (max-width: 600px) {
+  :root {
+    display: none;
+  }
+}
+
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: black;
+}
+::-webkit-scrollbar-thumb {
+  background: #1d1d1d;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }

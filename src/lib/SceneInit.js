@@ -85,6 +85,6 @@ export default class SceneInit {
     onWindowResize() {
         this.camera.aspect = window.innerWidth / window.innerHeight;
         this.camera.updateProjectionMatrix();
-        this.renderer.setSize(window.innerWidth /1.1, window.innerHeight / 1.1);
+        this.renderer.setSize(window.innerWidth , window.innerHeight);
     }
 }
