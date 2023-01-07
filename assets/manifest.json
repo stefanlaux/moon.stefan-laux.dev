@@ -1,0 +1,25 @@
+{
+  "short_name": "Moon",
+  "name": "3D Moon Website",
+  "start_url": ".",
+  "display": "fullscreen",
+  "theme_color": "black",
+  "background_color": "black",
+  "author": "Stefan Laux (https://stefan-laux.dev)",
+  "description": "A 3D website of the moon",
+  "file_handlers": {
+    "text": {
+      "extensions": "glb"
+    }
+  },
+  "orientation": "landscape",
+    "icons":
+        {
+        "src": "./assets/arrow.svg",
+        "sizes": "48x48",
+        "type": "image/svg+xml"
+        }
+
+        }
+
+

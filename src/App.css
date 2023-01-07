@@ -12,7 +12,7 @@ canvas{
     overflow-x: hidden;
 }
 
-p{
+.title{
     opacity: 0;
     z-index: -1;
     position: absolute;
@@ -33,7 +33,7 @@ h3{
     animation: left 5s forwards 1s;
 }
 
-img{
+.img{
     position: absolute;
     z-index: 2;
     top: 90%;
@@ -48,8 +48,52 @@ img{
 
 #details{
     position: absolute;
-    bottom: 0;
+    bottom: -100vh;
+    height: 100vh;
+    width: 100vw;
+    z-index: 4;
 }
+
+.textDetails{
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
+    padding-left: 10%;
+    width: 100vw;
+    font-size: 200%;
+    font-family: 'NATS', sans-serif;
+    display: flex;
+}
+
+.dataDetails{
+    margin-left: 10%;
+    overflow: visible;
+    width: 50%;
+    opacity: 1;
+}
+
+.titleDetails{
+    overflow: visible;
+}
+
+.p1{
+    margin-left: -20%;
+    opacity: 0;
+}
+.p2{
+    margin-left: -20%;
+    opacity: 0;
+}
+.p3{
+    margin-left: -20%;
+    opacity: 0;
+}
+.p4{
+    margin-left: -20%;
+    opacity: 0;
+}
+
+
 
 @keyframes opacity {
     0% {
@@ -96,4 +140,24 @@ img{
         right: 0;
         opacity: 1;
     }
+}
+
+.hideTitle{
+    text-align: center;
+    margin: 20px;
+}
+
+.hideLink{
+    position: absolute;
+    top: 150vh;
+    margin-bottom: 20%;
+    z-index: 2;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 10%;
+}
+
+.hideImg{
+    filter: invert(1);
+    rotate: 90deg;
 }
