@@ -45,11 +45,10 @@ function App() {
         const glftLoader = new GLTFLoader();
         glftLoader.load(moonObject, (gltfScene) => {
             moon = gltfScene;
-            let scale = Math.min(document.getElementById("canvas").width, document.getElementById("canvas").height) / 6000 -0.13;
+            let scale = Math.min(window.innerWidth, window.innerHeight) / 6000 -0.13;
             if (window.innerWidth < 600) {
-                scale = 0.01;
+                scale = 0.015
             }
-            console.log(scale)
             moon.scene.scale.set(scale,scale, scale);
             moon.scene.position.set(0, 1, 0);
             moon.scene.rotation.y = 180;
