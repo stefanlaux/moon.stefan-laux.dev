@@ -17,63 +17,84 @@ function App() {
     const isInViewp3 = useInView(useInViewp3);
     const useInViewp4 = useRef(null);
     const isInViewp4 = useInView(useInViewp4);
-    let t = 0.2;
+    let delay = 0.2;
 
     useEffect(() => {
-        document.getElementsByTagName("img")[0].src = arrowSVG;
-        document.getElementsByTagName("img")[1].src = arrowSVG;
-        const test = new SceneInit('canvas');
-        test.initialize();
-        test.animate();
 
-        for (let i = 0; i < 20; i++) {
-            const geometry = new THREE.SphereGeometry(0.1, 24, 24);
-            const material = new THREE.MeshBasicMaterial({ color: 0xffffff });
-            const star = new THREE.Mesh(geometry, material);
-
-            const [x, y, z] = Array(3)
-                .fill(0)
-                .map(() => THREE.MathUtils.randFloatSpread(100));
-
-            star.position.set(x, y, z -40);
-            test.scene.add(star);
+        //set src of arrow
+        let arrows = document.getElementsByTagName("img");
+        for (let i = 0; i < arrows.length; i++) {
+            arrows[i].src = arrowSVG;
         }
 
+        //set up scene
+        const scene = new SceneInit('canvas');
+        scene.initialize();
+        scene.animate();
 
+        //add stars
+        for (let i = 0; i < 20; i++) {
+            const geometry = new THREE.SphereGeometry(0.1, 24, 24);
+            const material = new THREE.MeshBasicMaterial({color: 0xffffff});
+            const star = new THREE.Mesh(geometry, material);
+            const [x, y, z] = Array(3).fill(0).map(() => THREE.MathUtils.randFloatSpread(1000));
+
+            //set position and scale
+            star.position.set(x, y, z - 1000);
+            star.scale.set(10, 10, 10)
+            scene.scene.add(star);
+        }
+
+        //add moon model
         let moonObject = new URL("/assets/Moon.glb", import.meta.url).href;
         let moon;
         const glftLoader = new GLTFLoader();
         glftLoader.load(moonObject, (gltfScene) => {
             moon = gltfScene;
-            let scale = Math.min(window.innerWidth, window.innerHeight) / 6000 -0.13;
+            let scale = Math.min(window.innerWidth, window.innerHeight) / 6000 - 0.13;
             if (window.innerWidth < 600) {
-                scale = 0.015
+                scale = 0.018
             }
-            moon.scene.scale.set(scale,scale, scale);
-            moon.scene.position.set(0, 1, 0);
+            moon.scene.scale.set(scale, scale, scale);
+            moon.scene.position.set(1, 1, 0);
             moon.scene.rotation.y = 180;
-            test.scene.add(gltfScene.scene);
+            scene.scene.add(gltfScene.scene);
         });
 
+        //animations
         const animate = () => {
+            //check if model already loaded
             if (moon) {
+
+                //rotate moon
                 moon.scene.rotation.y += 0.001;
+
+                //scroll progress
+                let t = document.body.getBoundingClientRect().top;
+
+                //scroll animations moon
+                if (t > -930) {
+                    moon.scene.position.set((t / 90) * -1.7, (-t / 90) * 0.005, (t / 90) * -1.2);
+                } else {
+                    let newT = -t - 930;
+                    moon.scene.position.set((t / 90) * -1.7 - newT * 0.04, (-t / 90) * 0.007, (t / 90) * -1.2 + newT * -0.04);
+                }
             }
-            if (clicked) {
-                moon.scene.rotation.y += 0.1;
-            }
+
             window.requestAnimationFrame(animate);
         };
         animate();
     }, []);
+
+    // animations data text all independent
     useEffect(() => {
         if (isInViewp1) {
             animate(
                 ".p1",
-                { opacity: 1, marginLeft: "5%" },
-                { delay: t, duration: 2 }
+                {opacity: 1, marginLeft: "-5%"},
+                {delay: delay, duration: 2}
             );
-            t+=0.1
+            delay += 0.1
         }
 
     }, [isInViewp1]);
@@ -82,20 +103,20 @@ function App() {
         if (isInViewp2) {
             animate(
                 ".p2",
-                { opacity: 1, marginLeft: "5%" },
-                { delay: t, duration: 2 }
+                {opacity: 1, marginLeft: "-5%"},
+                {delay: delay, duration: 2}
             );
-            t+=0.1
+            delay += 0.1
         }
     }, [isInViewp2]);
     useEffect(() => {
         if (isInViewp3) {
             animate(
                 ".p3",
-                { opacity: 1, marginLeft: "5%" },
-                { delay: t, duration: 2 }
+                {opacity: 1, marginLeft: "-5%"},
+                {delay: delay, duration: 2}
             );
-            t+=0.1
+            delay += 0.1
         }
 
     }, [isInViewp3]);
@@ -104,14 +125,13 @@ function App() {
         if (isInViewp4) {
             animate(
                 ".p4",
-                { opacity: 1, marginLeft: "5%" },
-                { delay: t, duration: 2 }
+                {opacity: 1, marginLeft: "-5%"},
+                {delay: delay, duration: 2}
             );
-            t+=0.1
+            delay += 0.1
         }
 
     }, [isInViewp4]);
-
 
 
     return (
@@ -121,35 +141,39 @@ function App() {
                     Please use a Laptop or Desktop for the best experience
                 </h1>
                 <div className="hideLink">
-                    <img className={"hideImg"} id={"arrow"} alt="arrow down img" onClick={() => window.location.href = "https://stefan-laux.dev"}/>
+                    <img className={"hideImgLink"} id={"arrow"} alt="arrow down img" onClick={() => window.location.href = "https://stefan-laux.dev"}/>
+                </div>
+                <div className="hideUp">
+                    <img className={"hideImgUp"} id={"arrow"} alt="arrow down img" onClick={() => window.location.href = "https://moon.stefan-laux.dev"}/>
                 </div>
             </div>
-        <div className={"App"}>
-            <h3>384’400 km</h3>
-            <img className={"img"} id={"arrow"} alt="arrow down img" onClick={() => window.location.href = "#details"}/>
+            <div className={"App"}>
+                <h3>384’400 km</h3>
+                <img className={"img"} id={"arrow"} alt="arrow down img"
+                     onClick={() => window.location.href = "#details"}/>
 
-            <p className={"title"}>MOON</p>
-            <canvas id="canvas"  height={"500px"} width={"500px"}/>
-            <div id="details">
-                <div className="textDetails">
-                    <div className={"titleDetails"}>
-                        <p className={"p1"} ref={useInViewp1} >Diameter: </p>
-                        <p className={"p2"} ref={useInViewp2} >Mass: </p>
-                        <p className={"p3"} ref={useInViewp3} >Gravitation: </p>
-                        <p className={"p4"} ref={useInViewp4} >Orbit: </p>
-                    </div>
+                <p className={"title"}>MOON</p>
+                <canvas id="canvas" height={"500px"} width={"500px"}/>
+                <div id="details">
+                    <div className="textDetails">
+                        <div className={"titleDetails"}>
+                            <p className={"p1"} ref={useInViewp1}>Diameter: </p>
+                            <p className={"p2"} ref={useInViewp2}>Mass: </p>
+                            <p className={"p3"} ref={useInViewp3}>Gravitation: </p>
+                            <p className={"p4"} ref={useInViewp4}>Orbit: </p>
+                        </div>
 
-                    <div className={"dataDetails"}>
-                        <p className={"p1"}>3’474.8 km</p>
-                        <p className={"p2"}>7.34767309 × 10²² kg</p>
-                        <p className={"p3"}>1.62 m/s² (0.1654G) </p>
-                        <p className={"p4"}>27 days</p>
+                        <div className={"dataDetails"}>
+                            <p className={"p1"}>3’474.8 km</p>
+                            <p className={"p2"}>7.34767309 × 10²² kg</p>
+                            <p className={"p3"}>1.62 m/s² (0.1654G) </p>
+                            <p className={"p4"}>27 days</p>
+                        </div>
+
                     </div>
 
                 </div>
-
             </div>
-        </div>
         </>
     );
 }

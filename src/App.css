@@ -74,6 +74,7 @@ h3{
 
 .titleDetails{
     overflow: visible;
+    width: 20%;
 }
 
 .p1{
@@ -157,7 +158,21 @@ h3{
     width: 10%;
 }
 
-.hideImg{
+.hideImgLink{
     filter: invert(1);
     rotate: 90deg;
+}
+
+.hideImgUp{
+    filter: invert(1);
+    rotate: -180deg;
+}
+
+.hideUp{
+    position: absolute;
+    top: 220vh;
+    z-index: 3;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 10%;
 }
