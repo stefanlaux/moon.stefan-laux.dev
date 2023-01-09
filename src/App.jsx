@@ -51,12 +51,12 @@ function App() {
         const glftLoader = new GLTFLoader();
         glftLoader.load(moonObject, (gltfScene) => {
             moon = gltfScene;
-            let scale = Math.min(window.innerWidth, window.innerHeight) / 6000 - 0.13;
+            let scale = 0.024;
             if (window.innerWidth < 600) {
                 scale = 0.018
             }
             moon.scene.scale.set(scale, scale, scale);
-            moon.scene.position.set(1, 1, 0);
+            moon.scene.position.set(0, 1, 0);
             moon.scene.rotation.y = 180;
             scene.scene.add(gltfScene.scene);
         });
@@ -65,20 +65,8 @@ function App() {
         const animate = () => {
             //check if model already loaded
             if (moon) {
-
                 //rotate moon
                 moon.scene.rotation.y += 0.001;
-
-                //scroll progress
-                let t = document.body.getBoundingClientRect().top;
-
-                //scroll animations moon
-                if (t > -930) {
-                    moon.scene.position.set((t / 90) * -1.7, (-t / 90) * 0.005, (t / 90) * -1.2);
-                } else {
-                    let newT = -t - 930;
-                    moon.scene.position.set((t / 90) * -1.7 - newT * 0.04, (-t / 90) * 0.007, (t / 90) * -1.2 + newT * -0.04);
-                }
             }
 
             window.requestAnimationFrame(animate);
@@ -149,8 +137,11 @@ function App() {
             </div>
             <div className={"App"}>
                 <h3>384’400 km</h3>
-                <img className={"img"} id={"arrow"} alt="arrow down img"
-                     onClick={() => window.location.href = "#details"}/>
+                <div className="explore">
+                    <p className={"exploreText"}>Explore</p>
+                    <img className={"img"} id={"arrow"} alt="arrow down img"
+                         onClick={() => window.location.href = "#details"}/>
+                </div>
 
                 <p className={"title"}>MOON</p>
                 <canvas id="canvas" height={"500px"} width={"500px"}/>

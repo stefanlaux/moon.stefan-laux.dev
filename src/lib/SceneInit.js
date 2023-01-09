@@ -60,6 +60,20 @@ export default class SceneInit {
 
     }
     animate() {
+
+        //scroll progress
+        let t = document.body.getBoundingClientRect().top;
+        t =  - (Math.abs(t) / (document.body.offsetHeight - window.innerHeight)) * 2000;
+
+        console.log(t)
+        //scroll animations moon
+        if (t > -1000) {
+            this.scene.position.set((t / 90) * -1.7, (-t / 90) * 0.000000001  - 1, (t / 90) * -1);
+        } else {
+            let newT = -t - 1000;
+            this.scene.position.set((t / 90) * -1.7 - newT * 0.04, (-t / 90) * 0.007 - 1, (t / 90) * -1 + newT * -0.04);
+        }
+
         window.requestAnimationFrame(this.animate.bind(this));
         this.render();
     }

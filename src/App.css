@@ -18,11 +18,13 @@ canvas{
     position: absolute;
     left: 49%;
     font-size: 1500%;
-    top: -41%;
+    top: 0;
+    margin: -8% 0 -10% 0;
     animation: top 5s forwards 1s;
 }
 
 h3{
+    margin: 0;
     position: absolute;
     top: 85%;
     rotate: -90deg;
@@ -42,6 +44,23 @@ h3{
     opacity: 0;
     width: 4%;
     right: 0;
+    left: unset;
+    animation: right 5s forwards 1s;
+}
+
+.explore{
+    height: fit-content;
+}
+
+.exploreText{
+    rotate: -90deg;
+    position: absolute;
+    z-index: 2;
+    top: 80%;
+    font-size: 150%;
+    opacity: 0;
+    right: 0;
+    margin: 0 0 0 0;
     left: unset;
     animation: right 5s forwards 1s;
 }
