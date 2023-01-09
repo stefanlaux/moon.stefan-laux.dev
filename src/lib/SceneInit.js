@@ -66,7 +66,6 @@ export default class SceneInit {
         let t = document.body.getBoundingClientRect().top;
         t =  - (Math.abs(t) / (document.body.offsetHeight - window.innerHeight)) * 2000;
 
-        console.log(this.scene.position)
         //scroll animations moon
         if (t > -1000) {
             this.scene.position.set((t / 90) * -1.7, (-t / 90) * 0.000000001  - 1, (t / 90) * -1);
