@@ -1,6 +1,7 @@
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import Stats from 'three/examples/jsm/libs/stats.module';
+import scene from "three/addons/offscreen/scene.js";
 
 export default class SceneInit {
     constructor(canvasId) {
@@ -65,13 +66,13 @@ export default class SceneInit {
         let t = document.body.getBoundingClientRect().top;
         t =  - (Math.abs(t) / (document.body.offsetHeight - window.innerHeight)) * 2000;
 
-        console.log(t)
+        console.log(this.scene.position)
         //scroll animations moon
         if (t > -1000) {
             this.scene.position.set((t / 90) * -1.7, (-t / 90) * 0.000000001  - 1, (t / 90) * -1);
         } else {
             let newT = -t - 1000;
-            this.scene.position.set((t / 90) * -1.7 - newT * 0.04, (-t / 90) * 0.007 - 1, (t / 90) * -1 + newT * -0.04);
+            this.scene.position.set((t / 90) * -1.8 - newT * 0.04, (-t / 90) * 0.007 - 1, (t / 90) * -1 + newT * -0.04);
         }
 
         window.requestAnimationFrame(this.animate.bind(this));

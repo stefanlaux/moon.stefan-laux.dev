@@ -36,33 +36,36 @@ h3{
 }
 
 .img{
-    position: absolute;
-    z-index: 2;
-    top: 90%;
+    z-index: 3;
     filter: invert(1);
     font-size: 150%;
-    opacity: 0;
-    width: 4%;
-    right: 0;
-    left: unset;
-    animation: right 5s forwards 1s;
+    width: 100%;
+    margin-bottom: -200%;
 }
 
 .explore{
-    height: fit-content;
+    z-index: 3;
+    width: 5%;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    top: 74%;
+    right: 0;
+    left: unset;
+    opacity: 0;
+    height: 20%;
+    overflow: visible;
+    animation: right 5s forwards 1s;
 }
+
 
 .exploreText{
     rotate: -90deg;
-    position: absolute;
     z-index: 2;
-    top: 80%;
     font-size: 150%;
-    opacity: 0;
-    right: 0;
-    margin: 0 0 0 0;
-    left: unset;
-    animation: right 5s forwards 1s;
+
+    margin: -150% 0 0 0;
+    animation: right 0s forwards 0s;
 }
 
 #details{

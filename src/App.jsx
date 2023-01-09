@@ -17,7 +17,7 @@ function App() {
     const isInViewp3 = useInView(useInViewp3);
     const useInViewp4 = useRef(null);
     const isInViewp4 = useInView(useInViewp4);
-    let delay = 0.2;
+    let delay = 0.3;
 
     useEffect(() => {
 
@@ -82,7 +82,7 @@ function App() {
                 {opacity: 1, marginLeft: "-5%"},
                 {delay: delay, duration: 2}
             );
-            delay += 0.1
+            delay += 0.2
         }
 
     }, [isInViewp1]);
@@ -94,7 +94,7 @@ function App() {
                 {opacity: 1, marginLeft: "-5%"},
                 {delay: delay, duration: 2}
             );
-            delay += 0.1
+            delay += 0.2
         }
     }, [isInViewp2]);
     useEffect(() => {
@@ -104,7 +104,7 @@ function App() {
                 {opacity: 1, marginLeft: "-5%"},
                 {delay: delay, duration: 2}
             );
-            delay += 0.1
+            delay += 0.2
         }
 
     }, [isInViewp3]);
@@ -116,7 +116,7 @@ function App() {
                 {opacity: 1, marginLeft: "-5%"},
                 {delay: delay, duration: 2}
             );
-            delay += 0.1
+            delay += 0.2
         }
 
     }, [isInViewp4]);
@@ -138,7 +138,7 @@ function App() {
             <div className={"App"}>
                 <h3>384’400 km</h3>
                 <div className="explore">
-                    <p className={"exploreText"}>Explore</p>
+                    <h3 className={"exploreText"}>Explore</h3>
                     <img className={"img"} id={"arrow"} alt="arrow down img"
                          onClick={() => window.location.href = "#details"}/>
                 </div>
