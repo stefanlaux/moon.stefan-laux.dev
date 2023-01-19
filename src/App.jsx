@@ -5,10 +5,14 @@ import SceneInit from './lib/SceneInit';
 import {GLTFLoader} from "three/addons/loaders/GLTFLoader.js";
 import {useInView} from "framer-motion";
 import {animate} from "motion";
+import {OrbitControls} from "three/examples/jsm/controls/OrbitControls";
 
 function App() {
     const [clicked, setClicked] = useState(false);
     let arrowSVG = new URL("/assets/arrow.svg", import.meta.url).href;
+    let infoSVG = new URL("/assets/info.svg", import.meta.url).href;
+    let closeSVG = new URL("/assets/close.svg", import.meta.url).href;
+    let personSVG = new URL("/assets/person.svg", import.meta.url).href;
     const useInViewp1 = useRef(null);
     const isInViewp1 = useInView(useInViewp1);
     const useInViewp2 = useRef(null);
@@ -19,13 +23,20 @@ function App() {
     const isInViewp4 = useInView(useInViewp4);
     let delay = 0.3;
 
+
     useEffect(() => {
 
         //set src of arrow
         let arrows = document.getElementsByTagName("img");
         for (let i = 0; i < arrows.length; i++) {
-            arrows[i].src = arrowSVG;
+            if (arrows[i].id === "arrow") {
+                arrows[i].src = arrowSVG;
+            }
         }
+        document.getElementById("view").src = infoSVG;
+        document.getElementById("close").src = closeSVG;
+        document.getElementById("close").hidden = true;
+        document.getElementById("person").src = personSVG;
 
         //set up scene
         const scene = new SceneInit('canvas');
@@ -121,6 +132,36 @@ function App() {
 
     }, [isInViewp4]);
 
+    const toggleScroll = (bool) => {
+        if (bool) {
+            document.documentElement.style.overflowY = "scroll";
+        }else{
+            document.documentElement.style.overflowY = "hidden";
+        }
+    }
+
+
+    const changeIcon = () => {
+
+        let view = document.getElementById("view");
+        let close = document.getElementById("close");
+        view.hidden = !view.hidden;
+        close.hidden = !close.hidden;
+
+        if (view.hidden){
+            toggleScroll(false);
+            animate(".cardInfo", {display: "flex"}, {duration: 0});
+            animate(".cardInfo", {opacity: 1}, {duration: 1.5});
+        }else{
+            toggleScroll(true);
+            animate(".cardInfo", {opacity: 0}, {duration: 1.5});
+            animate(".cardInfo", {display: "none"}, {duration: 1.5});
+
+        }
+    }
+
+
+
 
     return (
         <>
@@ -161,6 +202,44 @@ function App() {
                             <p className={"p4"}>27 days</p>
                         </div>
 
+                    </div>
+
+                </div>
+                <div id={"moondes1"} className="moonTextRight">
+                    <p className={"textMoon"}> Manned missions to the Moon, such as the historic Apollo 11 mission in 1969, have allowed us to explore and uncover many of its secrets. </p>
+                    </div>
+                <div id={"moondes2"} className="moonTextLeft">
+                    <p className={"textMoon"}> The Moon is a mesmerizing celestial wonder that has captivated humanity for centuries. This natural satellite of Earth orbits at a distance of 384,400 kilometers.</p>
+                </div>
+
+                <img className={"view icon"} id={"view"} alt="view icon" onClick={changeIcon} />
+                <img className={"close icon"} id={"close"} alt="close icon" onClick={changeIcon} />
+                <div className="cardInfo" id="cardInfo">
+
+                    <div className="cardContent">
+                        <div className="cardTitle">
+                            <h1>MOON</h1>
+                        </div>
+                        <div className="cardText">
+                            <p>Hello there, my name is Stefan Laux. I created this website as a small project to learn Three.JS. I hope you like this website. If you want to visit my portfolio website, please click the globe.</p>
+                            <div className="cardLink">
+                                <a href="https://stefan-laux.dev" target="_blank" rel="noreferrer">
+                                    <img className={"iconCard"} id={"person"} alt="person icon" />
+                                </a>
+                            </div>
+                        </div>
+                        <div className="cardThree">
+                            <p>This website was created using Three.js and a 3D model from NASA. Both sources are linked below.</p>
+                        </div>
+                        <div className="cardLinkThree">
+                            <a target="_blank" rel="noreferrer" href="https://threejs.org/">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Three.js_Icon.svg/1200px-Three.js_Icon.svg.png" alt="three logo" className={"three"}/>
+                            </a>
+                            <a target="_blank" rel="noreferrer" href="https://solarsystem.nasa.gov/resources/2366/earths-moon-3d-model/">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/NASA_logo.svg/2449px-NASA_logo.svg.png" alt="nasa logo" className={"nasa"}/>
+                            </a>
+
+                        </div>
                     </div>
 
                 </div>
