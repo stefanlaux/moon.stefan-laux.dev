@@ -22,6 +22,7 @@ export default class SceneInit {
     }
 
     initialize() {
+
         this.scene = new THREE.Scene();
         this.camera = new THREE.PerspectiveCamera(
             this.fov,
@@ -62,9 +63,11 @@ export default class SceneInit {
     }
     animate() {
 
+
         //scroll progress
         let t = document.body.getBoundingClientRect().top;
         t =  - (Math.abs(t) / (document.body.offsetHeight - window.innerHeight)) * 2000;
+
 
         //scroll animations moon
         if (t > -1000) {

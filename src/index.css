@@ -5,6 +5,7 @@
   color: white;
   overflow-x: hidden;
   scroll-behavior: smooth;
+  -webkit-user-select: none;
 }
 
 body{

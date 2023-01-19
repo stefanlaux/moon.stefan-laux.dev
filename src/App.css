@@ -198,3 +198,116 @@ h3{
     transform: translateX(-50%);
     width: 10%;
 }
+
+.moonTextRight{
+    position: absolute;
+    top: 215vh;
+    width: 30%;
+    right: 0;
+    margin: 13% 5% 5% 5%;
+}
+
+.moonTextLeft{
+    position: absolute;
+    top: 215vh;
+    width: 30%;
+    left: 0;
+    margin: 13% 5% 5% 5%;
+}
+
+.textMoon{
+    text-align: justify;
+    font-size: 150%;
+    font-family: 'NATS', sans-serif;
+}
+
+
+.icon{
+    filter: invert(1);
+    position: absolute;
+    left: 51%;
+    transform: translateX(-50%);
+    top: 285vh;
+    margin: 0;
+    padding: 0;
+    z-index: 999;
+}
+
+.cardInfo{
+    z-index: 998;
+    color: white;
+    position: absolute;
+    margin-top: 200vh;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 85%;
+    width: 95%;
+    background-color: transparent;
+    background-image: linear-gradient(to bottom right, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.1));
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    opacity: 0;
+    display: none;
+    justify-content: center;
+
+}
+
+.cardContent{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    height: available;
+    padding: 5%;
+    color: rgba(255, 255, 255, 0.6);
+    mix-blend-mode: lighten;
+}
+
+.cardTitle{
+    position: absolute;
+    top: 0%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 150%;
+}
+
+.cardText{
+    overflow: hidden;
+    width: 80%;
+    text-align: center;
+    font-size: 150%;
+    margin-top: 2%;
+    font-family: Arial, serif;
+}
+
+.iconCard{
+    overflow: hidden;
+    width: 10%;
+    filter: invert(0.6);
+}
+
+.cardThree{
+    overflow: hidden;
+    width: 80%;
+    text-align: center;
+    font-size: 130%;
+    margin-top: 5%;
+    font-family: Arial, serif;
+}
+
+.cardLinkThree{
+    overflow: hidden;
+    width: 30%;
+}
+
+.nasa{
+    width: 40%;
+    filter: grayscale(1) brightness(0.9) saturate(0);
+}
+
+.three{
+    margin-left: 15%;
+    width: 40%;
+    filter: invert(0.6);
+}
