@@ -221,7 +221,7 @@ function App() {
                             <h1>MOON</h1>
                         </div>
                         <div className="cardText">
-                            <p>Hello there, my name is Stefan Laux. I created this website as a small project to learn Three.JS. I hope you like this website. If you want to visit my portfolio website, please click the globe.</p>
+                            <p>Hello there, my name is Stefan Laux. I created this website as a small project to learn Three.JS. I hope you like it. If you want to visit my portfolio website, click the link below.</p>
                             <div className="cardLink">
                                 <a href="https://stefan-laux.dev" target="_blank" rel="noreferrer">
                                     <img className={"iconCard"} id={"person"} alt="person icon" />
